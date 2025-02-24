@@ -45,8 +45,14 @@ body {
 
 .cards {
     margin: 7.5rem 8% 0;
-
     /* Ejercicio 0: Crea una regla usando max-width adecuadamente para que todas las tarjetas no crezcan más de 375px de ancho */
+}
+
+.card-calculator,
+.card-team-builder,
+.card-supervisor,
+.card-karma {
+    max-width: 375px;
 }
 
 .card-supervisor {
@@ -120,7 +126,51 @@ body {
     /** Ejercicio 1. Muestra las tarjetas en 2 columnas y 2 filas usando Grid.   */
     .cards {
         display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        align-items: center;
+        justify-items: center;
     }
+
+    .card-karma,
+    .card-supervisor {
+        min-height: 218px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-paragraph {
+        font-size: 1.6rem;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: "left mid1 rigth"
+            "left mid2 rigth";
+        gap: 15px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .card-supervisor {
+        grid-area: left;
+    }
+
+    .card-calculator {
+        grid-area: rigth;
+    }
+
+    .card-team-builder {
+        grid-area: mid1;
+    }
+    .card-karma { grid-area: mid2;}
+    .card-karma,
+    .card-supervisor {
+        min-height: 218px;
+    }
+
 }
 
 /** Ejercicio 2: Crea una nueva media query para que, cuando lleguemos como mínimo 1200px de viewport width, apliquemos cambiemos el grid a .card {} , con todas las propiedades necesarias para que se vea como en diseño final. Además, haz que todos los elementos del grid esten en el centro del cross axis  */
